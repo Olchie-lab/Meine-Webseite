@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Webseite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Willkommen zu meiner Webseite</h1>
+        <p>Hier finden Sie eine Einführung zu meinem Thema und eine Karte, auf der Sie mehr über verschiedene Stadtteile erfahren können.</p>
+    </header>
+
+    <main>
+        <section class="map">
+            <h2>Karte der Stadtteile</h2>
+            <img src="images/karte.jpg" alt="Karte der Stadtteile" usemap="#stadtteileMap">
+
+            <map name="stadtteileMap">
+                <area shape="rect" coords="50,50,150,150" href="pages/stadtteil1.html" alt="Stadtteil 1">
+                <area shape="rect" coords="200,50,300,150" href="pages/stadtteil2.html" alt="Stadtteil 2">
+                <area shape="rect" coords="350,50,450,150" href="pages/stadtteil3.html" alt="Stadtteil 3">
+            </map>
+        </section>
+    </main>
+</body>
+</html>
