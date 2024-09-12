@@ -1,9 +1,11 @@
+/* Globales Styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     text-align: center;
+    overflow-x: auto; /* Ermöglicht horizontales Scrollen, wenn nötig */
 }
 
 header {
@@ -31,10 +33,29 @@ main {
     padding: 20px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
+/* Container für die Karte */
+section.map {
+    max-width: 100%;        /* Die Karte nimmt maximal 100% der Breite des Containers ein */
+    overflow: visible;      /* Überlauf wird sichtbar gemacht */
+    margin: 0 auto;         /* Zentriert den Container auf der Seite */
+    display: inline-block;  /* Damit das Bild in den Container passt und scrollbar ist */
+}
+
+/* Responsive Image */
+img.responsive-image {
+    width: 100%;            /* Passt sich der Containerbreite an */
+    height: auto;           /* Höhe passt sich automatisch an */
+    max-width: 100%;        /* Maximal so breit wie der Container */
+    object-fit: contain;    /* Verhindert Verzerrungen, passt das Bild an den Container an */
+    display: block;         /* Bild wird als Block-Element dargestellt */
+}
+
+/* Media Query für kleine Bildschirme */
+@media (max-width: 768px) {
+    img.responsive-image {
+        max-width: 100%;   /* Bild füllt die gesamte Breite kleiner Bildschirme */
+        height: auto;      /* Höhe passt sich automatisch an */
+    }
 }
 
 footer {
@@ -44,40 +65,4 @@ footer {
 footer a {
     text-decoration: none;
     color: #333;
-}
-
-/* Popup-Container */
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    display: none; /* Popups sind standardmäßig versteckt */
-    z-index: 1000;
-}
-
-/* Hintergrundüberlagerung */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* Überlagerung standardmäßig versteckt */
-    z-index: 999;
-}
-
-/* Schließen-Button */
-.popup-close {
-    cursor: pointer;
-    color: #333;
-    font-size: 20px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 10px;
 }
