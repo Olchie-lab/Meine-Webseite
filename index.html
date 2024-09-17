@@ -13,9 +13,9 @@
     </header>
 
     <main>
-        <section class="map">
+        <section class="map" width="100%">
             <h2>Karte der Stadtteile</h2>
-            <img src="images/Stadtplan.jpg" alt="Karte der Stadtteile" usemap="#stadtteileMap">
+            <img src="images/Stadtplan.jpg" class="responsive-image" alt="Karte der Stadtteile" usemap="#stadtteileMap">
 
             <map name="stadtteileMap">
                 <!-- Stadtteile mit Platzhalter-Koordinaten -->
@@ -33,20 +33,40 @@
 
     <!-- Einbindung des responsive Image Map Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('img[usemap]').rwdImageMaps();
-        });
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('img[usemap]').on('load', function() {
+        $(this).rwdImageMaps(); // Plugin initialisieren
+    });
 
-    <!-- Einbindung des responsive Image Map Plugins -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('img[usemap]').rwdImageMaps();
+    // Skalieren der Area-Koordinaten falls nötig
+    let originalWidth = 2244; // Originalbreite des Bildes (in Pixeln)
+    let originalHeight = 2065; // Originalhöhe des Bildes (in Pixeln)
+
+    $(window).on('resize', function() {
+        // Berechne die aktuellen Verhältnisse
+        let currentWidth = $('img[usemap]').width();  // Aktuelle Breite des Bildes
+        let currentHeight = $('img[usemap]').height(); // Aktuelle Höhe des Bildes
+        let scaleX = currentWidth / originalWidth;    // Verhältnis der Breite
+        let scaleY = currentHeight / originalHeight;  // Verhältnis der Höhe
+
+        // Skalieren der Area-Koordinaten (X- und Y-Koordinaten getrennt)
+        $('area').each(function() {
+            let coords = $(this).attr('coords').split(','); // Hole die ursprünglichen Koordinaten
+            let newCoords = coords.map(function(coord, index) {
+                if (index % 2 === 0) {
+                    // X-Koordinate (gerade Indexe)
+                    return Math.round(coord * scaleX);
+                } else {
+                    // Y-Koordinate (ungerade Indexe)
+                    return Math.round(coord * scaleY);
+                }
+            });
+            $(this).attr('coords', newCoords.join(',')); // Setze die neuen Koordinaten
         });
-    </script>
+    }).resize(); // Event sofort nach dem Laden auslösen, um die Skalierung anzuwenden
+});
+</script>
 </body>
 </html>

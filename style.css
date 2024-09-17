@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    overflow-x: auto; /* Ermöglicht horizontales Scrollen, wenn nötig */
+    overflow-x: hidden; /* Kein horizontales Scrollen, wenn es nicht nötig ist */
 }
 
 header {
@@ -35,26 +35,25 @@ main {
 
 /* Container für die Karte */
 section.map {
-    max-width: 100%;        /* Die Karte nimmt maximal 100% der Breite des Containers ein */
-    overflow: visible;      /* Überlauf wird sichtbar gemacht */
-    margin: 0 auto;         /* Zentriert den Container auf der Seite */
-    display: inline-block;  /* Damit das Bild in den Container passt und scrollbar ist */
+    max-width: 100%;         /* Die Karte nimmt maximal 100% der Breite des Containers ein */
+    overflow: hidden;        /* Überlauf wird versteckt */
+    margin: 0 auto;          /* Zentriert den Container auf der Seite */
+    display: inline-block;   /* Damit das Bild in den Container passt und scrollbar ist */
 }
 
 /* Responsive Image */
 img.responsive-image {
-    width: 100%;            /* Passt sich der Containerbreite an */
-    height: auto;           /* Höhe passt sich automatisch an */
-    max-width: 100%;        /* Maximal so breit wie der Container */
-    object-fit: contain;    /* Verhindert Verzerrungen, passt das Bild an den Container an */
-    display: block;         /* Bild wird als Block-Element dargestellt */
+    width: 100%;             /* Bild füllt den gesamten Container */
+    height: auto;            /* Höhe wird proportional angepasst */
+    display: block;          /* Bild wird als Block-Element dargestellt */
+    text-align: center;
 }
 
 /* Media Query für kleine Bildschirme */
 @media (max-width: 768px) {
     img.responsive-image {
-        max-width: 100%;   /* Bild füllt die gesamte Breite kleiner Bildschirme */
-        height: auto;      /* Höhe passt sich automatisch an */
+        max-width: 100%;     /* Bild füllt die gesamte Breite kleiner Bildschirme */
+        height: auto;        /* Höhe passt sich automatisch an */
     }
 }
 
