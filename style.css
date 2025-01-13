@@ -2,35 +2,53 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
+    margin:  0;
     padding: 0;
-    text-align: center;
+    text-align: justify;
     overflow-x: hidden; /* Kein horizontales Scrollen, wenn es nicht nötig ist */
 }
 
 header {
-    background-color: #f6eeee;
-    color: white;
-    padding: 10px 0;
+    background-color: #f4f4f4;
+    color: rgb(0, 0, 0);
+    margin: 15px 0;
+    padding: 20px;
+    text-align: justify;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 h1 {
+    color: rgb(0, 0, 0);
+    text-align: center;
     margin: 0;
     font-size: 24px;
 }
 
 h2 {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    color: #333;
+}
+
+h3 {
+    color: rgb(0, 0, 0);
+    text-align: center;
     color: #333;
 }
 
 p {
     font-size: 16px;
-    color: #666;
+    color: rgb(0, 0, 0);
     margin: 15px 0;
+    text-align: justify;
 }
 
 main {
     padding: 20px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Container für die Karte */
@@ -58,10 +76,37 @@ img.responsive-image {
 }
 
 footer {
+    background-color: grey;
+    color: white;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
     margin-top: 20px;
 }
 
 footer a {
     text-decoration: none;
-    color: #333;
+    color: white;
+}
+
+footer p {
+    color: white;
+    text-align: center;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px){
+    main {
+        padding: 0 10%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    header {
+        padding: 0 10%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 }
