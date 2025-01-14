@@ -110,3 +110,11 @@ footer a:hover {
         margin: 0 auto;
     }
 }
+
+.map {
+    position: relative;
+}
+
+.map area {
+    cursor: pointer;
+}
